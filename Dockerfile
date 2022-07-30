@@ -34,7 +34,8 @@ RUN dpkg --add-architecture i386 && apt-get update -yqq && apt-get install -y \
 
 RUN gem install google-api-client
 RUN gem install fastlane -NV
-RUN gem install fastlane-plugin-appicon fastlane-plugin-android_change_string_app_name fastlane-plugin-humanable_build_number 
+RUN gem install fastlane-plugin-appicon fastlane-plugin-android_change_string_app_name fastlane-plugin-humanable_build_number
+RUN gem install fastlane-plugin-firebase_app_distribution
 
 ENV LANG en_US.UTF-8
 
