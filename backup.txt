@@ -1,0 +1,45 @@
+FROM ubuntu:22.04
+
+LABEL de.mindrunner.android-docker.flavour="ubuntu-standalone"
+
+ENV ANDROID_SDK_HOME /opt/android-sdk-linux
+ENV ANDROID_SDK_ROOT /opt/android-sdk-linux
+ENV ANDROID_HOME /opt/android-sdk-linux
+ENV ANDROID_SDK /opt/android-sdk-linux
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN dpkg --add-architecture i386
+RUN apt-get update -yqq
+RUN apt-get install -y
+RUN apt-get install  curl -y
+RUN apt-get install  expect -y
+RUN apt-get install  git -y
+RUN apt-get install  make -y
+RUN apt-get install  libc6:i386 -y
+RUN apt-get install  libgcc1:i386 -y
+RUN apt-get install  libncurses5:i386 -y
+RUN apt-get install  libstdc++6:i386 -y
+RUN apt-get install  zlib1g:i386 -y
+RUN apt-get install  openjdk-11-jdk -y
+RUN apt-get install  wget -y
+RUN apt-get install  unzip -y
+RUN apt-get install  vim -y
+RUN apt-get install  openssh-client -y
+RUN apt-get install  locales -y
+RUN apt-get install  libarchive-tools -y
+RUN apt-get install  sudo -y
+RUN apt-get install  python3 -y
+RUN sudo apt install ruby ruby-dev -y
+RUN sudo apt-get install build-essential -y
+RUN apt-get clean -y
+
+RUN gem install google-api-client -y
+RUN gem install fastlane -NV
+RUN gem install fastlane-plugin-appicon fastlane-plugin-android_change_string_app_name fastlane-plugin-humanable_build_number 
+
+ENV LANG en_US.UTF-8
+
+RUN groupadd android && useradd -d /opt/android-sdk-linux -g android -u 1000 android
+
+WORKDIR /opt/android-sdk-linux
