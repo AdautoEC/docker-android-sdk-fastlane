@@ -41,4 +41,12 @@ ENV LANG en_US.UTF-8
 
 RUN groupadd android && useradd -d /opt/android-sdk-linux -g android -u 1000 android
 
+COPY tools /opt/tools
+
+COPY licenses /opt/licenses
+
 WORKDIR /opt/android-sdk-linux
+
+RUN /opt/tools/entrypoint.sh built-in
+
+CMD /opt/tools/entrypoint.sh built-in
