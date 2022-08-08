@@ -9,16 +9,16 @@ ENV ANDROID_SDK /opt/android-sdk-linux
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN dpkg --add-architecture i386 && apt-get update -yqq && apt-get install -y \
+RUN apt-get update -yqq && apt-get install -y \
   curl \
   expect \
   git \
   make \
-  libc6:i386 \
-  libgcc1:i386 \
-  libncurses5:i386 \
-  libstdc++6:i386 \
-  zlib1g:i386 \
+  libc6 \
+  libgcc1 \
+  libncurses5 \
+  libstdc++6 \
+  zlib1g \
   openjdk-11-jdk \
   wget \
   unzip \
